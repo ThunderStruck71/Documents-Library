@@ -1,0 +1,62 @@
+@import "./variables.less";
+
+.documentsList {
+  width         : 100%;
+  padding       : 0 5px;
+  display       : flex;
+  flex-direction: column;
+
+  &__notFound {
+    display        : flex;
+    justify-content: center;
+    font-size      : 18px;
+    margin         : auto;
+    color          : @gray;
+  }
+
+  &__element {
+    display       : flex;
+    flex-direction: column;
+  }
+
+  &__element_input {
+    display: none;
+  }
+
+  &__element_label {
+    width     : 100%;
+    box-sizing: border-box;
+    padding   : 13px 5px;
+    margin-top: 5px;
+    background: linear-gradient(to right, @primary, @secondary);
+    ;
+    color: @white;
+
+    &:active {
+      color: @red;
+    }
+  }
+
+  &__element_description {
+    position: relative;
+    padding: 10px;
+    box-sizing: border-box;
+  
+    color: @white;
+    background: @dark-gray;
+    background-clip: padding-box; /* !importanté */
+    border: solid 2px transparent; /* !importanté */
+    border-bottom-left-radius: 8px;
+    border-bottom-right-radius: 8px;
+  
+    &:before {
+      content: '';
+      position: absolute;
+      top: 0; right: 0; bottom: 0; left: 0;
+      z-index: -1;
+      margin: -2px; /* !importanté */
+      border-radius: inherit; /* !importanté */
+      background: linear-gradient(to right, @primary, @secondary);
+    }
+  }
+}
