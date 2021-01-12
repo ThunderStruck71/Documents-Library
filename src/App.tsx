@@ -31,21 +31,21 @@ const App: FC = () => {
     setSearchTerm({
       ...searchTerm,
       [key]: value
-    })
-  }
+    });
+  };
 
   const updateSortField = (value: string) => {
     setSortOption({
       ...sortOption,
       field: value
-    })
+    });
   };
 
   const updateSortDirection = (value: string) => {
     setSortOption({
       ...sortOption,
       direction: value
-    })
+    });
   };
 
   return (

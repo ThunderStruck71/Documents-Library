@@ -27,7 +27,7 @@ new Server({
       }
 
       return schema.documents.none();
-    })
+    });
   },
   models: {
     document: Model
@@ -35,16 +35,16 @@ new Server({
   factories: {
     document: Factory.extend({
       id(i) {
-        return Number(i)
+        return Number(i);
       },
       name() {
-        return generateName(TITLES)
+        return generateName(TITLES);
       },
       creationDate() {
-        return generateDate()
+        return generateDate();
       },
       description() {
-        return generateRandomDescription(DESCRIPTIONS)
+        return generateRandomDescription(DESCRIPTIONS);
       }
     }),
   },
@@ -53,21 +53,22 @@ new Server({
       serialize(object, request) {
         // HACK Mirage keeps wanting to store integer IDs as strings. Always convert them to numbers for now.
         const numerifyId = (doc) => {
-          doc.id = Number(doc.id)
-        }
-        let json = IdSerializer.prototype.serialize.apply(this, arguments)
+          doc.id = Number(doc.id);
+        };
+        
+        let json = IdSerializer.prototype.serialize.apply(this, arguments);
 
         if (json.document) {
-          numerifyId(json.document)
+          numerifyId(json.document);
         } else if (json.documents) {
-          json.documents.forEach(numerifyId)
+          json.documents.forEach(numerifyId);
         }
 
-        return json
+        return json;
       },
     }),
   },
   seeds(server) {
-    server.createList('document', 10000)
+    server.createList('document', 10000);
   }
 });

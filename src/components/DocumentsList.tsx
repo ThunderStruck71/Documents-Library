@@ -20,7 +20,7 @@ const DocumentsList: FC<DocumentsListProps> = props => {
     } else {
       return documentsCopy.sort((prev, next) => prev.creationDate > next.creationDate ? direction : direction * -1);
     }
-  }
+  };
 
   return (
     <div className="documentsList">
